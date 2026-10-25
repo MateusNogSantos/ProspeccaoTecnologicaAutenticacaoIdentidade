@@ -1,0 +1,18 @@
+server:
+  port: 8080
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          poc-client:
+            provider: poc
+            client-id: poc-client
+            client-secret: poc-secret
+            authorization-grant-type: authorization_code
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+            scope: openid, profile, api.read
+        provider:
+          poc:
+            issuer-uri: http://localhost:9000   # lê o Discovery ao iniciar

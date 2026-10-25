@@ -1,0 +1,29 @@
+server:
+  port: 9000
+
+spring:
+  security:
+    user:                          # usuário de demonstração (em memória)
+      name: alice
+      password: alice123
+    oauth2:
+      authorizationserver:
+        issuer: http://localhost:9000   # vai na claim "iss" e no Discovery
+        client:
+          poc-client:                  # aplicação web: Authorization Code + PKCE
+            registration:
+              client-id: poc-client
+              client-secret: "{noop}poc-secret"
+              client-authentication-methods: [client_secret_basic]
+              authorization-grant-types: [authorization_code, refresh_token]
+              redirect-uris: [http://127.0.0.1:8080/login/oauth2/code/poc-client]
+              scopes: [openid, profile, api.read]
+            require-proof-key: true            # PKCE obrigatório
+            require-authorization-consent: true
+          poc-service:                 # serviço sem usuário: Client Credentials
+            registration:
+              client-id: poc-service
+              client-secret: "{noop}service-secret"
+              client-authentication-methods: [client_secret_basic]
+              authorization-grant-types: [client_credentials]
+              scopes: [api.read]

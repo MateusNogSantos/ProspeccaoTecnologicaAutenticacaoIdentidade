@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  PoC - Criptografia e Identidade: OAuth 2.0, OpenID Connect e JWT
+  Projeto Maven multimódulo (Spring Boot 4.1.2 / Spring Security 7.1 / Java 21)
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>4.1.2</version>
+        <relativePath/>
+    </parent>
+
+    <groupId>br.edu.poc</groupId>
+    <artifactId>poc-oauth2-oidc-jwt</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+    <name>PoC OAuth 2.0 + OpenID Connect + JWT</name>
+
+    <properties>
+        <java.version>21</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <modules>
+        <module>auth-server</module>
+        <module>resource-server</module>
+        <module>client-app</module>
+    </modules>
+</project>
